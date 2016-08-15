@@ -11,18 +11,20 @@ The main interface is given by the function `mriPlot`. The functions `mriSetSlic
 `mriSetMIP`, `mriSetMarker`, `mriBackground`, `mriSetOpacity`, `mriExport`, and
 `mriSetCoords` are used to implement the GUI, but can also be called directly.
 `mriVolume` provides a unified interface for specifying MR volumes in different
-forms for `mriPlot`. For more information, see the Matlab `help` of the respective
-function. All other functions are for internal purposes only.
+forms for `mriPlot`. It uses [SPM](http://www.fil.ion.ucl.ac.uk/spm/), which
+therefore has to be installed. For more information, see the Matlab `help` of the
+respective function. All other functions are for internal purposes only.
 
 
 ***
 
-This software was developed with Matlab R2015a.
-It is copyrighted © 2016 by Carsten Allefeld and released under the terms of the
-GNU General Public License, version 3 or later, except for the following portions:
+This software was developed with SPM8 and Matlab R2015a,, but later versions should
+work, too.It is copyrighted © 2016 by Carsten Allefeld and released under the terms
+of the GNU General Public License, version 3 or later, except for the following
+portions:
 
 The two background images, `icbm152asym09b_black.nii.gz` and
-`icbm152asym09b_white.nii.gz`, were derived from the image\
+`icbm152asym09b_white.nii.gz`, were derived from the image  
 `mni_icbm152_t1_tal_nlin_asym_09b_hires.nii`,
 part of the 'ICBM 2009b Nonlinear Asymmetric' atlas released at
 <http://nist.mni.mcgill.ca/?p=904> with the following license:
