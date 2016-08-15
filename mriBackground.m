@@ -23,16 +23,16 @@ newbg = true;
 if ischar(vol)
     switch vol
         case 'black'
-            vol = which('icbm152asym09b_black.nii');
+            vol = which('icbm152asym09b_black.nii.gz');
         case 'white'
-            vol = which('icbm152asym09b_white.nii');
+            vol = which('icbm152asym09b_white.nii.gz');
         case 'none'
              newbg = false;
 %             [X, Y, Z] = ndgrid([0 1], [0 1], [0 1]);
 %             vol = {nan(2, 2, 2), [X(:), Y(:), Z(:)]'};
 %             clim = [0 0 1];
         case 'two-tone'
-            vol = which('icbm152asym09b_black.nii');
+            vol = which('icbm152asym09b_black.nii.gz');
             [vol, XYZ] = mriVolume(vol);
             vol = {vol > 0.61, XYZ};
             cmap = [1 1 1 ; 0 0 0];

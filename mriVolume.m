@@ -26,6 +26,11 @@ function [vol, XYZ] = mriVolume(vol, mask)
 % volume data are given
 if ischar(vol)                                  % as filename
     fprintf('loading %s\n', vol)
+    gz = ~isempty(regexp(vol, '.gz$', 'once')); % gzipped image?
+    if gz
+        tfn = gunzip(vol, tempdir);             % gunzip to temporary file
+        vol = tfn{1};
+    end
     [vol, XYZ] = spm_read_vols(spm_vol(vol));
 elseif iscell(vol)                              % as first element of cell array
     XYZ = vol{2};
@@ -39,6 +44,11 @@ end
 % if mask data are given then
 if ~isempty(mask) && ischar(mask)               % as filename
     fprintf('loading %s\n', mask)
+    gz = ~isempty(regexp(mask, '.gz$', 'once')); % gzipped image?
+    if gz
+        tfn = gunzip(mask, tempdir);             % gunzip to temporary file
+        mask = tfn{1};
+    end
     V = spm_vol(mask);
     mask = spm_read_vols(V);
     if any(V.dt(1) == [2 4 8 256 512 768])
