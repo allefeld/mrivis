@@ -19,7 +19,7 @@ respective function. All other functions are for internal purposes only.
 ***
 
 This software was developed with SPM8 and Matlab R2015a,, but later versions should
-work, too.It is copyrighted © 2016 by Carsten Allefeld and released under the terms
+work, too. It is copyrighted © 2016 by Carsten Allefeld and released under the terms
 of the GNU General Public License, version 3 or later, except for the following
 portions:
 

@@ -9,7 +9,7 @@ function [vol, XYZ] = mriVolume(vol, mask)
 % - filename of img/hdr or nii file
 % - 1d numerical array (specifying in-mask voxels only – needs mask)
 % - 3d numerical array
-% - cell array consisting of array as above and XYZ-data
+% - cell array consisting of array as above and XYZ-data or transf. matrix
 %
 % mask can be:
 % - 3d array, logical or numerical
@@ -35,6 +35,12 @@ if ischar(vol)                                  % as filename
 elseif iscell(vol)                              % as first element of cell array
     XYZ = vol{2};
     vol = vol{1};
+    if isequal(size(XYZ), [4, 4])   % XYZ as transformation matrix
+        mat = XYZ;
+        [R, C, P]  = ndgrid(1 : size(vol, 1), 1 : size(vol, 2), 1 : size(vol, 3));
+        XYZ = mat(1:3, :) * [R(:)'; C(:)'; P(:)' ; ones(1, numel(vol))];
+        clear R C P
+    end
 end                                             % or directly
 
 if ~exist('mask', 'var')
